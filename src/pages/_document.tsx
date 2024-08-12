@@ -24,7 +24,7 @@ export default class MyDocument extends Document {
           // もともとのstyle
           initialProps.styles,
           // styled-componentsのstyle
-          sheet.getStyleElement()
+          sheet.getStyleElement(),
         ],
       }
     } finally {
