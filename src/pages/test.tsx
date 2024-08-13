@@ -3,7 +3,7 @@ import Box from 'components/layout/Box'
 import Button from 'components/atoms/Button'
 import Text from 'components/atoms/Text'
 import Dropdown from 'components/molecules/Dropdown'
-import DropdownSection from 'components/organisms/DropdownSection'
+import DropdownSection from 'components/organisms/SectionSelectDevice'
 
 
 const Test: NextPage = () => {
@@ -24,7 +24,7 @@ const Test: NextPage = () => {
         <Text variant='extraSmall'>※楽天モバイルSPUの毎月の獲得上限ポイント数は2,000ポイント。期間限定ポイントでの付与。詳細はこちらをご確認ください。</Text>
       </Box>
 
-      <Box width="256px" height="auto" padding="16px">
+      <Box width="400px" height="auto" padding="16px">
         <Dropdown
           options={[
             { id:1, value:'iPhone15ProMax', label:'iPhone15ProMax'},
@@ -35,7 +35,7 @@ const Test: NextPage = () => {
         />
       </Box>
 
-      <Box width="auto" height="auto" padding="16px">
+      <Box width="400px" height="auto" padding="16px">
         <DropdownSection />
       </Box>
     </div>

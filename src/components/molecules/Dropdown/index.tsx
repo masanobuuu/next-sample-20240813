@@ -98,7 +98,7 @@ export interface DropdownItem {
   id: string | number | null // カスタマイズ
   value: string | number | null
   label?: string
-  price_full?: number | null // カスタマイズ
+  priceFull?: number | null // カスタマイズ
 }
 
 interface DropdownProps {
