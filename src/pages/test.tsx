@@ -9,8 +9,21 @@ const Test: NextPage = () => {
     <Box width="256px" height="80px" padding="16px">
         <Button>ボタン</Button>
     </Box>
+<<<<<<< HEAD
+=======
+    <Box width="256px" height="80px" padding="16px">
+        <Button variant="secondary">ボタン</Button>
+    </Box>
+    <Box width="256px" height="80px" padding="16px">
+        <Button variant="monotone">ボタン</Button>
+    </Box>
+>>>>>>> Buttonコンポーネントのカスタマイズ（RM仕様）
     </div>
   )
 }
 
+<<<<<<< HEAD
 export default Test
+=======
+export default Test
+>>>>>>> Buttonコンポーネントのカスタマイズ（RM仕様）
