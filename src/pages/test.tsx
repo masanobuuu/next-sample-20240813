@@ -3,6 +3,7 @@ import Box from 'components/layout/Box'
 import Button from 'components/atoms/Button'
 import Text from 'components/atoms/Text'
 import Dropdown from 'components/molecules/Dropdown'
+import DropdownSection from 'components/organisms/DropdownSection'
 
 
 const Test: NextPage = () => {
@@ -32,6 +33,10 @@ const Test: NextPage = () => {
           placeholder="製品を選択してください"
           onChange={(v)=> console.log(v?.value)}
         />
+      </Box>
+
+      <Box width="auto" height="auto" padding="16px">
+        <DropdownSection />
       </Box>
     </div>
   )
