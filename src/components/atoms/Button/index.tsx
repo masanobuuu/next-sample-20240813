@@ -9,7 +9,6 @@ import {
   LineHeight,
   Space,
 } from 'utils/styles'
-import { theme } from 'themes'
 
 // ボタンのバリアント
 export type ButtonVariant = 'primary' | 'secondary' | 'danger'
@@ -54,42 +53,42 @@ const variants = {
   // プライマリ
   primary: {
     color: 'white',
-    backgroundColor: 'primary',
+    backgroundColor: '#3f51b5',
     border: 'none',
     pseudoClass: {
       hover: {
-        backgroundColor: 'primaryDark',
+        backgroundColor: '#2c387e',
       },
       disabled: {
-        backgroundColor: 'primary',
+        backgroundColor: '#3f51b5',
       },
     },
   },
   // セカンダリ
   secondary: {
     color: 'white',
-    backgroundColor: 'secondary',
+    backgroundColor: '#f50057',
     border: 'none',
     pseudoClass: {
       hover: {
-        backgroundColor: 'secondaryDark',
+        backgroundColor: '#ab003c',
       },
       disabled: {
-        backgroundColor: 'secondary',
+        backgroundColor: '#f50057',
       },
     },
   },
   // デンジャー
   danger: {
     color: 'white',
-    backgroundColor: 'danger',
+    backgroundColor: '#ed1c24',
     border: 'none',
     pseudoClass: {
       hover: {
-        backgroundColor: 'dangerDark',
+        backgroundColor: '#a50d12',
       },
       disabled: {
-        backgroundColor: 'danger',
+        backgroundColor: '#ed1c24',
       },
     },
   },
@@ -100,18 +99,17 @@ const variants = {
  * バリアント、色、タイポグラフィ、レイアウト、スペース関連のPropsを追加
  */
 const Button = styled.button<ButtonProps>`
-  ${({ variant, color, backgroundColor, pseudoClass, theme }) => {
+  ${({ variant, color, backgroundColor, pseudoClass }) => {
     // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
       !color &&
-        styles.push(toPropValue('color', variants[variant].color, theme))
+        styles.push(toPropValue('color', variants[variant].color))
       !backgroundColor &&
         styles.push(
           toPropValue(
             'background-color',
             variants[variant].backgroundColor,
-            theme,
           ),
         )
       !pseudoClass &&
@@ -120,7 +118,6 @@ const Button = styled.button<ButtonProps>`
             ${toPropValue(
               'background-color',
               variants[variant].pseudoClass.hover.backgroundColor,
-              theme,
             )}
           }`.replaceAll('\n', ''),
         )
@@ -130,35 +127,34 @@ const Button = styled.button<ButtonProps>`
             ${toPropValue(
               'background-color',
               variants[variant].pseudoClass.disabled.backgroundColor,
-              theme,
             )}
           }`.replaceAll('\n', ''),
         )
       return styles.join('\n')
     }
   }}
-  ${(props) => toPropValue('font-size', props.fontSize, theme)}
-  ${(props) => toPropValue('letter-spacing', props.letterSpacing, theme)}
-  ${(props) => toPropValue('line-height', props.lineHeight, theme)}
-  ${(props) => toPropValue('color', props.color, theme)}
-  ${(props) => toPropValue('background-color', props.backgroundColor, theme)}
-  ${(props) => toPropValue('width', props.width, theme)}
-  ${(props) => toPropValue('height', props.height, theme)}
-  ${(props) => toPropValue('min-width', props.minWidth, theme)}
-  ${(props) => toPropValue('min-height', props.minHeight, theme)}
-  ${(props) => toPropValue('display', props.display, theme)}
-  ${(props) => toPropValue('border', props.border, theme)}
-  ${(props) => toPropValue('overflow', props.overflow, theme)}
-  ${(props) => toPropValue('margin', props.margin, theme)}
-  ${(props) => toPropValue('margin-top', props.marginTop, theme)}
-  ${(props) => toPropValue('margin-left', props.marginLeft, theme)}
-  ${(props) => toPropValue('margin-bottom', props.marginBottom, theme)}
-  ${(props) => toPropValue('margin-right', props.marginRight, theme)}
-  ${(props) => toPropValue('padding', props.padding, theme)}
-  ${(props) => toPropValue('padding-top', props.paddingTop, theme)}
-  ${(props) => toPropValue('padding-left', props.paddingLeft, theme)}
-  ${(props) => toPropValue('padding-bottom', props.paddingBottom, theme)}
-  ${(props) => toPropValue('padding-right', props.paddingRight, theme)}
+  ${(props) => toPropValue('font-size', props.fontSize)}
+  ${(props) => toPropValue('letter-spacing', props.letterSpacing)}
+  ${(props) => toPropValue('line-height', props.lineHeight)}
+  ${(props) => toPropValue('color', props.color)}
+  ${(props) => toPropValue('background-color', props.backgroundColor)}
+  ${(props) => toPropValue('width', props.width)}
+  ${(props) => toPropValue('height', props.height)}
+  ${(props) => toPropValue('min-width', props.minWidth)}
+  ${(props) => toPropValue('min-height', props.minHeight)}
+  ${(props) => toPropValue('display', props.display)}
+  ${(props) => toPropValue('border', props.border)}
+  ${(props) => toPropValue('overflow', props.overflow)}
+  ${(props) => toPropValue('margin', props.margin)}
+  ${(props) => toPropValue('margin-top', props.marginTop)}
+  ${(props) => toPropValue('margin-left', props.marginLeft)}
+  ${(props) => toPropValue('margin-bottom', props.marginBottom)}
+  ${(props) => toPropValue('margin-right', props.marginRight)}
+  ${(props) => toPropValue('padding', props.padding)}
+  ${(props) => toPropValue('padding-top', props.paddingTop)}
+  ${(props) => toPropValue('padding-left', props.paddingLeft)}
+  ${(props) => toPropValue('padding-bottom', props.paddingBottom)}
+  ${(props) => toPropValue('padding-right', props.paddingRight)}
   &:hover {
     ${(props) =>
       toPropValue(
@@ -177,16 +173,16 @@ const Button = styled.button<ButtonProps>`
   outline: 0;
   text-decoration: 'none';
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
-  border-radius: 4px;
+  border-radius: 16px;
   border: none;
 `
 
 Button.defaultProps = {
   variant: 'primary',
-  paddingLeft: 2,
-  paddingRight: 2,
-  paddingTop: 1,
-  paddingBottom: 1,
+  paddingLeft: "8px",
+  paddingRight: "8px",
+  paddingTop: "8px",
+  paddingBottom: "8px",
   color: 'white',
   display: 'inline-block',
   textAlign: 'center',

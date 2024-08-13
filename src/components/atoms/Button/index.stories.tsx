@@ -3,6 +3,7 @@ import Button from './index'
 
 export default {
   title: 'Atoms/Button',
+  component: Button,
   argTypes: {
     variant: {
       options: ['primary', 'secondary'],
