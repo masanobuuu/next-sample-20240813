@@ -53,8 +53,8 @@ const variants = {
   // プライマリ
   primary: {
     color: 'white',
-    backgroundColor: '#3f51b5',
-    border: 'none',
+    backgroundColor: '#ff008c',
+    border: '1px solid #ff008c',
     pseudoClass: {
       hover: {
         backgroundColor: '#2c387e',
@@ -99,12 +99,14 @@ const variants = {
  * バリアント、色、タイポグラフィ、レイアウト、スペース関連のPropsを追加
  */
 const Button = styled.button<ButtonProps>`
-  ${({ variant, color, backgroundColor, pseudoClass }) => {
+  ${({ variant, color, border, backgroundColor, pseudoClass }) => {
     // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
       !color &&
         styles.push(toPropValue('color', variants[variant].color))
+      !border &&
+      styles.push(toPropValue('border', variants[variant].border))
       !backgroundColor &&
         styles.push(
           toPropValue(
@@ -173,16 +175,15 @@ const Button = styled.button<ButtonProps>`
   outline: 0;
   text-decoration: 'none';
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
-  border-radius: 16px;
-  border: none;
+  border-radius: 50px;
 `
 
 Button.defaultProps = {
   variant: 'primary',
-  paddingLeft: "8px",
-  paddingRight: "8px",
-  paddingTop: "8px",
-  paddingBottom: "8px",
+  paddingLeft: "24px",
+  paddingRight: "24px",
+  paddingTop: "16px",
+  paddingBottom: "16px",
   color: 'white',
   display: 'inline-block',
   textAlign: 'center',
