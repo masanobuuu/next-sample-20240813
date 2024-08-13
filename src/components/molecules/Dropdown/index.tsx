@@ -13,25 +13,26 @@ const DropdownControl = styled.div<{ hasError?: boolean }>`
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
-  border: ${({ theme, hasError }) =>
+  border: ${({ hasError }) =>
     hasError
-      ? `1px solid ${theme.colors.danger}`
-      : `1px solid ${theme.colors.border}`};
+      ? `1px solid red`
+      : `1px solid #666`};
   border-radius: 5px;
   box-sizing: border-box;
   cursor: default;
   outline: none;
   padding: 8px 52px 8px 12px;
+  width: 320px;
 `
 
 const DropdownValue = styled.div`
-  color: ${({ theme }) => theme.colors.text};
+  color: #333333;
 `
 
 // ドロップダウンプレースホルダー
 const DropdownPlaceholder = styled.div`
   color: #757575;
-  font-size: ${({ theme }) => theme.fontSizes[1]};
+  font-size: 14px;
   min-height: 20px;
   line-height: 20px;
 `
@@ -56,7 +57,7 @@ const DropdownArrow = styled.div<{ isOpen?: boolean }>`
 
 const DropdownMenu = styled.div`
   background-color: #ffffff;
-  border: ${({ theme }) => theme.colors.border};
+  border: 1px solid #666;
   box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
     0px 8px 10px 1px rgb(0 0 0 / 10%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
   box-sizing: border-box;
@@ -97,7 +98,7 @@ export interface DropdownItem {
   id: string | number | null // カスタマイズ
   value: string | number | null
   label?: string
-  price_full: number | null // カスタマイズ
+  price_full?: number | null // カスタマイズ
 }
 
 interface DropdownProps {
@@ -136,7 +137,6 @@ const Dropdown = (props: DropdownProps) => {
   const [isOpen, setIsOpenValue] = useState(false)
   const [selectedItem, setSelectedItem] = useState(initialItem)
   const dropdownRef = useRef<HTMLDivElement>(null)
-
   const handleDocumentClick = useCallback(
     (e: MouseEvent | TouchEvent) => {
       // 自分自身をクリックした場合は何もしない
