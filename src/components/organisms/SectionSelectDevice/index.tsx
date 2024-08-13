@@ -18,11 +18,11 @@ const SectionSelectDevice = () => {
             <Text>{priceFull}円</Text>
             <Dropdown
                 options={[
-                { id:1, value:'iPhone15ProMax', label:'iPhone15ProMax', priceFull:10000},
-                { id:2, value:'iPhone15Pro', label:'iPhone15Pro', priceFull:8000},
+                { id:1, value:'iPhone15ProMax', label:'iPhone15ProMax', data:{priceFull:10000}},
+                { id:2, value:'iPhone15Pro', label:'iPhone15Pro', data:{priceFull:8000}},
                 ]}
                 placeholder="製品を選択してください"
-                onChange={(e)=> setPriceFull(e?.priceFull)}
+                onChange={(e)=> setPriceFull(e?.data.priceFull)}
             />
         </Box>
       </div>
