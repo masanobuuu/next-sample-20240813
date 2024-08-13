@@ -9,6 +9,12 @@ const Test: NextPage = () => {
     <Box width="256px" height="80px" padding="16px">
         <Button>ボタン</Button>
     </Box>
+    <Box width="256px" height="80px" padding="16px">
+        <Button variant="secondary">ボタン</Button>
+    </Box>
+    <Box width="256px" height="80px" padding="16px">
+        <Button variant="monotone">ボタン</Button>
+    </Box>
     </div>
   )
 }

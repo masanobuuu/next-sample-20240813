@@ -52,12 +52,12 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 const variants = {
   // プライマリ
   primary: {
-    color: 'white',
+    color: '#ffffff',
     backgroundColor: '#ff008c',
     border: '1px solid #ff008c',
     pseudoClass: {
       hover: {
-        backgroundColor: '#2c387e',
+        backgroundColor: '#ab003c',
       },
       disabled: {
         backgroundColor: '#3f51b5',
@@ -66,9 +66,9 @@ const variants = {
   },
   // セカンダリ
   secondary: {
-    color: 'white',
-    backgroundColor: '#f50057',
-    border: 'none',
+    color: '#ff008c',
+    backgroundColor: '#ffffff',
+    border: '1px solid #ff008c',
     pseudoClass: {
       hover: {
         backgroundColor: '#ab003c',
@@ -176,6 +176,7 @@ const Button = styled.button<ButtonProps>`
   text-decoration: 'none';
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   border-radius: 50px;
+  box-shadow: 0 4px 0 rgba(0,0,0,.1);
 `
 
 Button.defaultProps = {
