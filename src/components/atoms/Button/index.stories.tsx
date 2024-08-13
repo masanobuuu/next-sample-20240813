@@ -4,6 +4,10 @@ import Button from './index'
 export default {
   title: 'Atoms/Button',
   component: Button,
+  parameters: {
+    //中央に表示
+    layout: 'centered',
+  },
   argTypes: {
     variant: {
       options: ['primary', 'secondary'],
