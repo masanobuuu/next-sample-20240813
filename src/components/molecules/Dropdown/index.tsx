@@ -96,7 +96,7 @@ const DropdownItem = (props: DropdownItemProps) => {
 
 export interface DropdownItem {
   id: string | number | null // カスタマイズ
-  value: string | number | null
+  value: string | number | null //valueのオブジェクト化
   label?: string
   priceFull?: number | null // カスタマイズ
 }
