@@ -11,7 +11,7 @@ import {
 } from 'utils/styles'
 
 // ボタンのバリアント
-export type ButtonVariant = 'primary' | 'secondary' | 'danger'
+export type ButtonVariant = 'primary' | 'secondary' | 'monotone'
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant
@@ -57,7 +57,7 @@ const variants = {
     border: '1px solid #ff008c',
     pseudoClass: {
       hover: {
-        backgroundColor: '#ab003c',
+        backgroundColor: '#ff008c',
       },
       disabled: {
         backgroundColor: '#3f51b5',
@@ -71,21 +71,21 @@ const variants = {
     border: '1px solid #ff008c',
     pseudoClass: {
       hover: {
-        backgroundColor: '#ab003c',
+        backgroundColor: '#ffffff',
       },
       disabled: {
         backgroundColor: '#f50057',
       },
     },
   },
-  // デンジャー
-  danger: {
-    color: 'white',
-    backgroundColor: '#ed1c24',
-    border: 'none',
+  // モノトーン
+  monotone: {
+    color: '#4d4d4d',
+    backgroundColor: '#ffffff',
+    border: '1px solid #666',
     pseudoClass: {
       hover: {
-        backgroundColor: '#a50d12',
+        backgroundColor: '#ffffff',
       },
       disabled: {
         backgroundColor: '#ed1c24',
@@ -177,6 +177,7 @@ const Button = styled.button<ButtonProps>`
   opacity: ${({ disabled }) => (disabled ? '0.5' : '1')};
   border-radius: 50px;
   box-shadow: 0 4px 0 rgba(0,0,0,.1);
+  font: bold 16px "Noto Sans JP",sans-serif;
 `
 
 Button.defaultProps = {
