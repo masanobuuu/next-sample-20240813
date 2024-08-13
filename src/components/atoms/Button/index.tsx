@@ -105,8 +105,9 @@ const Button = styled.button<ButtonProps>`
       const styles = []
       !color &&
         styles.push(toPropValue('color', variants[variant].color))
+        console.log(color)
       !border &&
-      styles.push(toPropValue('border', variants[variant].border))
+        styles.push(toPropValue('border', variants[variant].border))
       !backgroundColor &&
         styles.push(
           toPropValue(
@@ -186,7 +187,6 @@ Button.defaultProps = {
   paddingRight: "24px",
   paddingTop: "16px",
   paddingBottom: "16px",
-  color: 'white',
   display: 'inline-block',
   textAlign: 'center',
   lineHeight: 'inherit',
