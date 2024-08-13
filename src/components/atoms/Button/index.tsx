@@ -105,7 +105,6 @@ const Button = styled.button<ButtonProps>`
       const styles = []
       !color &&
         styles.push(toPropValue('color', variants[variant].color))
-        console.log(color)
       !border &&
         styles.push(toPropValue('border', variants[variant].border))
       !backgroundColor &&
