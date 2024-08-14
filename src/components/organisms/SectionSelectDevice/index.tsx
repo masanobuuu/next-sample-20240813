@@ -29,8 +29,6 @@ const SectionSelectDevice = () => {
       .catch(err => setError(err.message))
   }, [])
 
-  console.log(option)
-
   // 子コンポーネント（Dropdown）側でステートを更新するための関数
   // ドロップダウンの項目選択がトリガーとなって子コンポーネント（Dropdown）側で以下関数の引数にオブジェクト（item）が格納される
   // itemが格納された時点で親コンポーネントが保有しているステート（price）を更新する
@@ -39,22 +37,25 @@ const SectionSelectDevice = () => {
     setPrice48(item.data.price48)
   }
 
+  console.log(price24==='' ? true : false)
+
   return (
     <div>
       <Box width="400px" height="auto" padding="16px" border="solid 1px">
-        <Text>あなたが選択した製品の価格</Text>
-        <Text>24回払いの場合：{price24}円/月</Text>
-        <Text>48回払いの場合：{price48}円/月</Text>
-        <Dropdown //以下を修正する
-          options={
-            [
-              { id: 1, value: 'iPhone15ProMax', label: 'iPhone15ProMax', data: { price24: 10000, price48: 5000 } },
-              { id: 2, value: 'iPhone15Pro', label: 'iPhone15Pro', data: { price24: 8000, price48: 4000 } },
-            ]
-          }
+        <Text>ご希望の製品を選択してください</Text>
+        <Dropdown
+          // スプレッド構文でステートoption内のオブジェクトを分解して出力
+          /* @ts-ignore */
+          options={ [...option] }
           placeholder="製品を選択してください"
           onChange={onChange}
         />
+        <Box marginTop="16px" border="solid 1px">
+          <Text>あなたが選択した製品の価格</Text>
+          {price24==='' ? '' : <Text>24回払いの場合：{price24}円/月</Text>}
+          {price48==='' ? '' : <Text>48回払いの場合：{price48}円/月</Text>}
+        </Box>
+
       </Box>
     </div>
   )

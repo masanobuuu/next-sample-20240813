@@ -22,7 +22,7 @@ const DropdownControl = styled.div<{ hasError?: boolean }>`
   cursor: default;
   outline: none;
   padding: 8px 52px 8px 12px;
-  width: 320px;
+  width: auto;
 `
 
 const DropdownValue = styled.div`
