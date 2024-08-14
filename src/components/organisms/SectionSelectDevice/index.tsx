@@ -45,7 +45,7 @@ const SectionSelectDevice = () => {
         <Text>あなたが選択した製品の価格</Text>
         <Text>24回払いの場合：{price24}円/月</Text>
         <Text>48回払いの場合：{price48}円/月</Text>
-        <Dropdown
+        <Dropdown //以下を修正する
           options={
             [
               { id: 1, value: 'iPhone15ProMax', label: 'iPhone15ProMax', data: { price24: 10000, price48: 5000 } },
