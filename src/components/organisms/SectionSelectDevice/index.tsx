@@ -6,9 +6,11 @@ import Box from 'components/layout/Box'
 import Dropdown from 'components/molecules/Dropdown'
 
 
+
 const SectionSelectDevice = () => {
 
     // ステートを定義
+    const [option, setOption] = useState('')
     const [price24, setPrice24] = useState('')
     const [price48, setPrice48] = useState('')
 

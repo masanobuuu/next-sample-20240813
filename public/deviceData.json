@@ -1,0 +1,4 @@
+[
+    { "id":1, "value":"iPhone15ProMax", "label":"iPhone15ProMax", "data":{"price24":10000, "price48":5000}},
+    { "id":2, "value":"iPhone15Pro", "label":"iPhone15Pro", "data":{"price24":8000, "price48":4000}}
+]

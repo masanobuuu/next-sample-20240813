@@ -84,7 +84,6 @@ interface DropdownItemProps {
 
 const DropdownItem = (props: DropdownItemProps) => {
   const { item } = props
-  console.log(item)
   return (
     <Flex alignItems="center">
       <Text margin={0} variant="small">
