@@ -2,6 +2,7 @@ import type { NextPage } from 'next'
 import Box from 'components/layout/Box'
 import React, { useState } from "react";
 import RadioButton from 'components/atoms/RadioButton'
+import Text from 'components/atoms/Text'
 
 const RadioButtonPage: NextPage = () => {
     const [selectedOption, setSelectedOption] = useState("");
@@ -18,6 +19,7 @@ const RadioButtonPage: NextPage = () => {
           selectedOption={selectedOption}
           onChange={handleOptionChange}
         />
+        <Text>選択中の項目：{selectedOption}</Text>
       </div>
     )
   }
