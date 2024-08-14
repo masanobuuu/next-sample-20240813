@@ -22,7 +22,7 @@ const DropdownControl = styled.div<{ hasError?: boolean }>`
   cursor: default;
   outline: none;
   padding: 8px 52px 8px 12px;
-  width: 320px;
+  width: auto;
 `
 
 const DropdownValue = styled.div`
@@ -84,7 +84,6 @@ interface DropdownItemProps {
 
 const DropdownItem = (props: DropdownItemProps) => {
   const { item } = props
-  console.log(item)
   return (
     <Flex alignItems="center">
       <Text margin={0} variant="small">
@@ -98,7 +97,7 @@ export interface DropdownItem {
   id: string | number | null // カスタマイズ
   value: string | number | null
   label?: string
-  priceFull?: number | null // カスタマイズ
+  data?: object | null // カスタマイズ
 }
 
 interface DropdownProps {

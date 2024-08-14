@@ -14,7 +14,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "src" // これを追記する
+    "baseUrl": "src", // これを追記する
+    "downlevelIteration": true // 追加（TypeScriptでnew Set[...array]を使用しようとしたときのエラーを回避する）
   },
   "include": ["next-env.d.ts", "src/**/*.ts", "src/**/*.tsx"], // これを追記する
   "exclude": ["node_modules"]
