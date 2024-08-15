@@ -163,20 +163,8 @@ interface RadioButtonProps {
 
 //P304を参考にして親コンポーネント側のpropsにvatiantを持たせたほうがいい
 export default function RadioButton(props: RadioButtonProps) {
-  //以下にswitchを追加する
+
   const { options, selectedOption, onChange, variant } = props
-
-  /*
-  const fnVariantCheck = () => {
-    switch (variant) {
-      case 'normal':
-        return "border='none'"
-      case 'border':
-        return "border='1px solid #333333'"
-    }}
-  console.log(fnVariantCheck(variant))
-  */
-
 
   type RadioButtonStylePropVar = {
     borderStyle: string;
