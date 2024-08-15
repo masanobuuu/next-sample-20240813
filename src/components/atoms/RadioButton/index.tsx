@@ -19,7 +19,7 @@ const variants = {
     color: '#676767',
     pseudoClass: {
       hover: {
-        backgroundColor: '#ff008c',
+        backgroundColor: '#F7F7F7',
       },
       disabled: {
         backgroundColor: '#3f51b5',
@@ -27,13 +27,13 @@ const variants = {
     },
   },
   border: {
-    border: '1px solid #333333',
+    border: '1px solid #bfbfbf',
     borderRadius: '4px',
     fontSize: '16px',
     color: '#333333',
     pseudoClass: {
       hover: {
-        backgroundColor: '#ff008c',
+        backgroundColor: '#F7F7F7',
       },
       disabled: {
         backgroundColor: '#3f51b5',
@@ -87,10 +87,11 @@ type RadioButtonStyleProps = {
 }
 
 const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
-  ${({ variant, color, fontSize, border, borderRadius, pseudoClass }) => {
+  ${({ variant, backgroundColor, color, fontSize, border, borderRadius, pseudoClass }) => {
     // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
+
       !fontSize &&
         styles.push(toPropValue('font-size', variants[variant].fontSize))
       !color &&
@@ -153,27 +154,29 @@ RadioButtonStyle.defaultProps = {
 
 interface RadioButtonProps {
   options: string[]
-  selectedOption: string
+  selectedOption?: string
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
   variant: string
+  disabled?: string | undefined | boolean
 }
 
 
 export default function RadioButton(props: RadioButtonProps) {
 
-  const { options, selectedOption, onChange, ...obj } = props
+  const { options, selectedOption, onChange, disabled, ...obj } = props
 
   return (
     <div>
       {options.map((option) => (
         <label key={option}>
-         { /*@ts-ignore*/ }
+          { /*@ts-ignore*/}
           <RadioButtonStyle {...obj} >
             <input
               type="radio"
               value={option}
               checked={selectedOption === option}
               onChange={onChange}
+              disabled={disabled}
             />
             {option}
           </RadioButtonStyle>
