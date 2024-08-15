@@ -13,31 +13,32 @@ import {
 
 const variants = {
   normal: {
+    backgroundColor: '#FFFFFF',
+    DisableBackgroundColor: '#FFFFFF',
     border: 'none',
     borderRadius: '4px',
     fontSize: '16px',
     color: '#676767',
+    DisableColor: '#F7F7F7',
     pseudoClass: {
       hover: {
         backgroundColor: '#F7F7F7',
-      },
-      disabled: {
-        backgroundColor: '#3f51b5',
       },
     },
   },
   border: {
+    backgroundColor: '#FFFFFF',
+    DisableBackgroundColor: 'F7F7F7',
     border: '1px solid #bfbfbf',
     borderRadius: '4px',
     fontSize: '16px',
     color: '#333333',
+    DisableColor: '#bfbfbf',
     pseudoClass: {
       hover: {
         backgroundColor: '#F7F7F7',
       },
-      disabled: {
-        backgroundColor: '#3f51b5',
-      },
+
     },
   },
 }
@@ -57,12 +58,15 @@ type RadioButtonStyleProps = {
   lineHeight?: Responsive<LineHeight>
   textAlign?: Responsive<string>
   color?: Responsive<Color>
+  DisableColor?: Responsive<string>
   backgroundColor?: Responsive<Color>
+  DisableBackgroundColor?: Responsive<string>
   width?: Responsive<string>
   height?: Responsive<string>
   minWidth?: Responsive<string>
   minHeight?: Responsive<string>
   display?: Responsive<string>
+  disabled?: Responsive<string>
   border?: Responsive<string>
   borderRadius?: Responsive<string>
   overflow?: Responsive<string>
@@ -80,18 +84,15 @@ type RadioButtonStyleProps = {
     hover?: {
       backgroundColor?: Responsive<Color>
     }
-    disabled?: {
-      backgroundColor?: Responsive<Color>
-    }
   }
 }
 
 const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
-  ${({ variant, backgroundColor, color, fontSize, border, borderRadius, pseudoClass }) => {
+  { /* バリアントから受け取る・かつ条件分岐に使用するプロパティを指定 */}
+  ${({ variant, backgroundColor, color, fontSize, border, borderRadius, pseudoClass, disabled }) => {
     // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
-
       !fontSize &&
         styles.push(toPropValue('font-size', variants[variant].fontSize))
       !color &&
@@ -100,24 +101,23 @@ const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
         styles.push(toPropValue('border', variants[variant].border))
       !borderRadius &&
         styles.push(toPropValue('border-radius', variants[variant].borderRadius))
-      !pseudoClass &&
-        styles.push(
-          `&:hover {
+      if (disabled !== 'disabled') {
+        !backgroundColor &&
+          styles.push(toPropValue('background-color', variants[variant].backgroundColor))
+        !pseudoClass &&
+          styles.push(
+            `&:hover {
             ${toPropValue(
-            'background-color',
-            variants[variant].pseudoClass.hover.backgroundColor,
-          )}
+              'background-color',
+              variants[variant].pseudoClass.hover.backgroundColor,
+            )}
           }`.replaceAll('\n', ''),
-        )
-      !pseudoClass &&
-        styles.push(
-          `&:disabled {
-            ${toPropValue(
-            'background-color',
-            variants[variant].pseudoClass.disabled.backgroundColor,
-          )}
-          }`.replaceAll('\n', ''),
-        )
+          )
+      } else {
+        disabled &&
+          styles.push(toPropValue('background-color', variants[variant].DisableBackgroundColor))
+          styles.push(toPropValue('color', variants[variant].DisableColor))
+      }
       return styles.join('\n')
     }
   }}
@@ -163,6 +163,7 @@ interface RadioButtonProps {
 
 export default function RadioButton(props: RadioButtonProps) {
 
+  // RadioButto実行時に渡されるプロパティを同名の変数に分割代入
   const { options, selectedOption, onChange, disabled, ...obj } = props
 
   return (
@@ -170,7 +171,7 @@ export default function RadioButton(props: RadioButtonProps) {
       {options.map((option) => (
         <label key={option}>
           { /*@ts-ignore*/}
-          <RadioButtonStyle {...obj} >
+          <RadioButtonStyle disabled={disabled} {...obj} >
             <input
               type="radio"
               value={option}
