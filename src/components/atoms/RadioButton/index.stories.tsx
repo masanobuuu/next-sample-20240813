@@ -29,21 +29,7 @@ export default {
         type: { summary: 'boolean' },
       },
     },
-    width: {
-      control: { type: 'number' },
-      description: 'ボタンの横幅',
-      table: {
-        type: { summary: 'number' },
-      },
-    },
-    height: {
-      control: { type: 'number' },
-      description: 'ボタンの縦幅',
-      table: {
-        type: { summary: 'number' },
-      },
-    },
-    onClick: {
+    onChange: {
       description: 'onClickイベントハンドラ',
       table: {
         type: { summary: 'function' },
@@ -56,7 +42,7 @@ export default {
 // Normalボタン
 export const Normal: StoryObj = {
   args: { 
-    variant: 'normal', 
+    variant: "normal", 
     options: [ "Option 1", "Option 2", "Option 3" ],
     }
 }
@@ -64,7 +50,7 @@ export const Normal: StoryObj = {
 // Borderボタン
 export const Border: StoryObj = {
   args: { 
-    variant: 'border', 
+    variant: "border", 
     options: [ "Option 1", "Option 2", "Option 3" ],
     }
 }
@@ -73,5 +59,6 @@ export const Border: StoryObj = {
 export const Disabled: StoryObj = {
   args: { 
     disabled: true, 
+    options: [ "Option 1", "Option 2", "Option 3" ],
     }
 }

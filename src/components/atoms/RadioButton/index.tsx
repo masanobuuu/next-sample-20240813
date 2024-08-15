@@ -13,16 +13,32 @@ import {
 
 const variants = {
   normal: {
-    border: '1px solid #676767',
+    border: 'none',
     borderRadius: '4px',
     fontSize: '16px',
     color: '#676767',
+    pseudoClass: {
+      hover: {
+        backgroundColor: '#ff008c',
+      },
+      disabled: {
+        backgroundColor: '#3f51b5',
+      },
+    },
   },
   border: {
     border: '1px solid red',
     borderRadius: '4px',
     fontSize: '16px',
     color: '#333333',
+    pseudoClass: {
+      hover: {
+        backgroundColor: '#ff008c',
+      },
+      disabled: {
+        backgroundColor: '#3f51b5',
+      },
+    },
   },
 }
 
@@ -60,10 +76,18 @@ type RadioButtonStyleProps = {
   paddingRight?: Responsive<Space>
   paddingBottom?: Responsive<Space>
   paddingLeft?: Responsive<Space>
+  pseudoClass?: {
+    hover?: {
+      backgroundColor?: Responsive<Color>
+    }
+    disabled?: {
+      backgroundColor?: Responsive<Color>
+    }
+  }
 }
 
 const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
-  ${({ variant, color, fontSize, border, borderRadius }) => {
+  ${({ variant, color, fontSize, border, borderRadius, pseudoClass }) => {
     // バリアントのスタイルの適用
     if (variant && variants[variant]) {
       const styles = []
@@ -75,6 +99,24 @@ const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
         styles.push(toPropValue('border', variants[variant].border))
       !borderRadius &&
         styles.push(toPropValue('border-radius', variants[variant].borderRadius))
+      !pseudoClass &&
+        styles.push(
+          `&:hover {
+            ${toPropValue(
+              'background-color',
+              variants[variant].pseudoClass.hover.backgroundColor,
+            )}
+          }`.replaceAll('\n', ''),
+        )
+      !pseudoClass &&
+        styles.push(
+          `&:disabled {
+            ${toPropValue(
+              'background-color',
+              variants[variant].pseudoClass.disabled.backgroundColor,
+            )}
+          }`.replaceAll('\n', ''),
+        )
       return styles.join('\n')
     }
   }}
