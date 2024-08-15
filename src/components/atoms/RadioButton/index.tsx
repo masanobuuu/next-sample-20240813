@@ -27,7 +27,7 @@ const variants = {
     },
   },
   border: {
-    border: '1px solid red',
+    border: '1px solid #333333',
     borderRadius: '4px',
     fontSize: '16px',
     color: '#333333',
@@ -103,18 +103,18 @@ const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
         styles.push(
           `&:hover {
             ${toPropValue(
-              'background-color',
-              variants[variant].pseudoClass.hover.backgroundColor,
-            )}
+            'background-color',
+            variants[variant].pseudoClass.hover.backgroundColor,
+          )}
           }`.replaceAll('\n', ''),
         )
       !pseudoClass &&
         styles.push(
           `&:disabled {
             ${toPropValue(
-              'background-color',
-              variants[variant].pseudoClass.disabled.backgroundColor,
-            )}
+            'background-color',
+            variants[variant].pseudoClass.disabled.backgroundColor,
+          )}
           }`.replaceAll('\n', ''),
         )
       return styles.join('\n')
@@ -148,7 +148,7 @@ const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
 `
 
 RadioButtonStyle.defaultProps = {
-  variant: 'normal',
+  // variant: 'normal',
 }
 
 
@@ -158,16 +158,48 @@ interface RadioButtonProps {
   options: string[]
   selectedOption: string
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  variant: string
 }
 
 //P304を参考にして親コンポーネント側のpropsにvatiantを持たせたほうがいい
 export default function RadioButton(props: RadioButtonProps) {
   //以下にswitchを追加する
-  const { options, selectedOption, onChange } = props
+  const { options, selectedOption, onChange, variant } = props
+
+  /*
+  const fnVariantCheck = () => {
+    switch (variant) {
+      case 'normal':
+        return "border='none'"
+      case 'border':
+        return "border='1px solid #333333'"
+    }}
+  console.log(fnVariantCheck(variant))
+  */
+
+
+  type RadioButtonStylePropVar = {
+    borderStyle: string;
+    paddingStyle: string;
+  }
+
+  const { borderStyle, paddingStyle } = (
+    ()=>{
+      switch (variant) {
+        case 'normal':
+          return { borderStyle:'none', paddingStyle:'24px' }
+        case 'border':
+          return { borderStyle: '1px solid #333333', paddingStyle:'24px' }
+      }}
+  )()
+
+  console.log(borderStyle)
+  console.log(paddingStyle)
+
   return (
     <div>
       {options.map((option) => (
-        <RadioButtonStyle>
+        <RadioButtonStyle border={borderStyle} padding={paddingStyle}>
           <label key={option}>
             <input
               type="radio"

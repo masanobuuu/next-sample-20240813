@@ -20,7 +20,6 @@ export default {
         defaultValue: { summary: 'normal' },
       },
     },
-
     disabled: {
       control: { type: 'boolean' },
       defaultValue: false,

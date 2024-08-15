@@ -18,6 +18,7 @@ const RadioButtonPage: NextPage = () => {
           options={options}
           selectedOption={selectedOption}
           onChange={handleOptionChange}
+          variant='border'
         />
         <Text>選択中の項目：{selectedOption}</Text>
       </div>
