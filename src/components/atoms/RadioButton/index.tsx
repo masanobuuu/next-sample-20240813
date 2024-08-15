@@ -160,7 +160,7 @@ interface RadioButtonProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-
+//検証済
 export default function RadioButton(props: RadioButtonProps) {
   const { options, selectedOption, onChange } = props
   return (
