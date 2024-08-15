@@ -143,16 +143,13 @@ const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
   ${(props) => toPropValue('padding-bottom', props.paddingBottom)}
   ${(props) => toPropValue('padding-right', props.paddingRight)}
   font-family: 'Noto Sans JP",sans-serif';
-  margin:8px;
-  padding:8px;
 `
 
 RadioButtonStyle.defaultProps = {
-  // variant: 'normal',
+  variant: 'normal',
+  margin: '8px',
+  padding: '8px'
 }
-
-
-
 
 interface RadioButtonProps {
   options: string[]
@@ -161,34 +158,17 @@ interface RadioButtonProps {
   variant: string
 }
 
-//P304を参考にして親コンポーネント側のpropsにvatiantを持たせたほうがいい
+
 export default function RadioButton(props: RadioButtonProps) {
 
-  const { options, selectedOption, onChange, variant } = props
-
-  type RadioButtonStylePropVar = {
-    borderStyle: string;
-    paddingStyle: string;
-  }
-
-  const { borderStyle, paddingStyle } = (
-    ()=>{
-      switch (variant) {
-        case 'normal':
-          return { borderStyle:'none', paddingStyle:'24px' }
-        case 'border':
-          return { borderStyle: '1px solid #333333', paddingStyle:'24px' }
-      }}
-  )()
-
-  console.log(borderStyle)
-  console.log(paddingStyle)
+  const { options, selectedOption, onChange, ...obj } = props
 
   return (
     <div>
       {options.map((option) => (
-        <RadioButtonStyle border={borderStyle} padding={paddingStyle}>
-          <label key={option}>
+        <label key={option}>
+         { /*@ts-ignore*/ }
+          <RadioButtonStyle {...obj} >
             <input
               type="radio"
               value={option}
@@ -196,8 +176,8 @@ export default function RadioButton(props: RadioButtonProps) {
               onChange={onChange}
             />
             {option}
-          </label>
-        </RadioButtonStyle>
+          </RadioButtonStyle>
+        </label>
       ))}
     </div>
   )
