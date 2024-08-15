@@ -160,8 +160,9 @@ interface RadioButtonProps {
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-
+//P304を参考にして親コンポーネント側のpropsにvatiantを持たせたほうがいい
 export default function RadioButton(props: RadioButtonProps) {
+  //以下にswitchを追加する
   const { options, selectedOption, onChange } = props
   return (
     <div>
