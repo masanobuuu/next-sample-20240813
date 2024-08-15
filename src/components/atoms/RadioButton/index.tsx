@@ -22,7 +22,7 @@ const variants = {
     DisableColor: '#F7F7F7',
     pseudoClass: {
       hover: {
-        backgroundColor: '#F7F7F7',
+        backgroundColor: 'none',
       },
     },
   },

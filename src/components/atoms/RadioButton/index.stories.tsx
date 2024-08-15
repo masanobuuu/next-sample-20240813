@@ -57,7 +57,8 @@ export const Border: StoryObj = {
 // Disabledボタン
 export const Disabled: StoryObj = {
   args: { 
-    disabled: true, 
+    variant: "border",
+    disabled: "disabled", 
     options: [ "Option 1", "Option 2", "Option 3" ],
     }
 }
