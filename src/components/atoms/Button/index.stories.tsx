@@ -62,21 +62,24 @@ export default {
 
 // Primaryボタン
 export const Primary: StoryObj = {
-  args: { 
-    variant: 'primary', 
-    children: 'Primary Button' }
+  args: {
+    variant: 'primary',
+    children: 'Primary Button'
+  }
 }
 
 // Secondaryボタン
 export const Secondary: StoryObj = {
-  args: { 
-    variant: 'econdary', 
-    children: 'Secondary Button' }
+  args: {
+    variant: 'econdary',
+    children: 'Secondary Button'
+  }
 }
 
 // Disabledボタン
 export const Disabled: StoryObj = {
-  args: { 
-    disabled: true, 
-    children: 'Disabled Button' }
+  args: {
+    disabled: 'disabled',
+    children: 'Disabled Button'
+  }
 }
