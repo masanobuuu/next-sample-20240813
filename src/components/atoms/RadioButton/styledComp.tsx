@@ -85,7 +85,7 @@ const variants = {
     }
   }
   
- const RadioButtonStyle = styled.div<StyledCompProps>`
+ const StyledRadioButton = styled.div<StyledCompProps>`
     /* バリアントから受け取る・かつ条件分岐に使用するプロパティを指定 */
     ${({ variant, backgroundColor, color, fontSize, border, borderRadius, pseudoClass, disabled }) => {
   
@@ -144,10 +144,10 @@ const variants = {
     font-family: 'Noto Sans JP",sans-serif';
   `
   
-  RadioButtonStyle.defaultProps = {
+  StyledRadioButton.defaultProps = {
     variant: 'normal',
     margin: '8px',
     padding: '8px'
   }
 
-  export default RadioButtonStyle
+  export default StyledRadioButton
