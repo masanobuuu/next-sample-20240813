@@ -87,6 +87,7 @@ type RadioButtonStyleProps = {
   }
 }
 
+// スタイルを外部化する
 const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
   { /* バリアントから受け取る・かつ条件分岐に使用するプロパティを指定 */}
   ${({ variant, backgroundColor, color, fontSize, border, borderRadius, pseudoClass, disabled }) => {
