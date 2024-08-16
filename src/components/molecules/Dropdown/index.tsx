@@ -57,11 +57,17 @@ interface DropdownProps {
  * ドロップダウン
  */
 const Dropdown = (props: DropdownProps) => {
+  // disableを追加する
   const { onChange, name, value, options, hasError } = props
+  
   const initialItem = options.find((i) => i.value === value)
+  
   const [isOpen, setIsOpenValue] = useState(false)
+  
   const [selectedItem, setSelectedItem] = useState(initialItem)
+  
   const dropdownRef = useRef<HTMLDivElement>(null)
+  
   const handleDocumentClick = useCallback(
     (e: MouseEvent | TouchEvent) => {
       // 自分自身をクリックした場合は何もしない
@@ -111,6 +117,7 @@ const Dropdown = (props: DropdownProps) => {
 
   return (
     <DropdownRoot ref={dropdownRef}>
+      { /*条件分岐を追加する*/ }
       <DropdownControl
         hasError={hasError}
         onMouseDown={handleMouseDown}
