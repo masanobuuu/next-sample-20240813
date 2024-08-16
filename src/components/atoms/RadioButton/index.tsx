@@ -90,7 +90,7 @@ type RadioButtonStyleProps = {
 const RadioButtonStyle = styled.div<RadioButtonStyleProps>`
   { /* バリアントから受け取る・かつ条件分岐に使用するプロパティを指定 */}
   ${({ variant, backgroundColor, color, fontSize, border, borderRadius, pseudoClass, disabled }) => {
-    // バリアントのスタイルの適用
+
     if (variant && variants[variant]) {
       const styles = []
       !fontSize &&
