@@ -49,6 +49,7 @@ const SectionSelectDevice = () => {
           options={ [...option] }
           placeholder="製品を選択してください"
           onChange={onChange}
+          disabled='true'
         />
         <Box marginTop="16px" border="solid 1px">
           <Text>あなたが選択した製品の価格</Text>

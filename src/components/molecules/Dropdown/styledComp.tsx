@@ -6,14 +6,17 @@ export const DropdownRoot = styled.div`
 `
 
 // ドロップダウン外観
-export const DropdownControl = styled.div<{ hasError?: boolean }>`
+export const DropdownControl = styled.div<{ hasError?: boolean,  disabled?: boolean }>`
   position: relative;
   overflow: hidden;
   background-color: #ffffff;
-  border: ${({ hasError }) =>
+  border: ${({ hasError, disabled }) => 
     hasError
       ? `1px solid red`
-      : `1px solid #333333`};
+      : !disabled
+          ? `1px solid #333333`
+          :  `1px solid #D9D9D9`
+      };      
   border-radius: 4px;
   box-sizing: border-box;
   cursor: default;
