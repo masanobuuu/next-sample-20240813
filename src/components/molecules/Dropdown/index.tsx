@@ -54,7 +54,7 @@ interface DropdownProps {
   /**
  * Disable
  */
-  disabled?: boolean | string
+  disabled?: boolean
 }
 
 /**
@@ -124,11 +124,11 @@ const Dropdown = (props: DropdownProps) => {
 
       {/* DropdownControlの外観と挙動をdisableの状態に応じて出し分けできないか？ */}
       <DropdownControl
-        disabled = {disabled}  //disable==trueの場合は外観を変える
-        hasError = {hasError}
-        onMouseDown = {!disabled ? handleMouseDown : undefined} //disable==trueの場合は発火させない
-        onTouchEnd = {handleMouseDown} //disable==trueの場合は発火させない
-        data-testid = "dropdown-control"
+        disabled={disabled}  //disable==trueの場合は外観を変える
+        hasError={hasError}
+        onMouseDown={!disabled ? handleMouseDown : undefined} //disable==trueの場合は発火させない
+        onTouchEnd={handleMouseDown} //disable==trueの場合は発火させない
+        data-testid="dropdown-control"
       >
         {selectedItem && (
           <DropdownValue>
@@ -137,7 +137,7 @@ const Dropdown = (props: DropdownProps) => {
         )}
         {/* 何も選択されてない時はプレースホルダーを表示 */}
         {!selectedItem && (
-          <DropdownPlaceholder>{props?.placeholder}</DropdownPlaceholder>
+          <DropdownPlaceholder disabled={disabled}>{props?.placeholder}</DropdownPlaceholder>
         )}
         {/* ダミーinput */}
         <input
