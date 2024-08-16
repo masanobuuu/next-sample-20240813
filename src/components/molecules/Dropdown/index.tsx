@@ -126,7 +126,7 @@ const Dropdown = (props: DropdownProps) => {
       <DropdownControl
         disabled = {disabled}  //disable==trueの場合は外観を変える
         hasError = {hasError}
-        onMouseDown = {handleMouseDown} //disable==trueの場合は発火させない
+        onMouseDown = {!disabled ? handleMouseDown : undefined} //disable==trueの場合は発火させない
         onTouchEnd = {handleMouseDown} //disable==trueの場合は発火させない
         data-testid = "dropdown-control"
       >
