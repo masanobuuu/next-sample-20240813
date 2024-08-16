@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from 'styled-components'
-import RadioButtonStyle from './styledComp'
+import StyledRadioButton from './styledComp'
 
 
 interface RadioButtonProps {
@@ -22,7 +22,7 @@ export default function RadioButton(props: RadioButtonProps) {
       {options.map((option) => (
         <label key={option}>
           { /*@ts-ignore*/}
-          <RadioButtonStyle disabled={disabled} {...obj} >
+          <StyledRadioButton disabled={disabled} {...obj} >
             <input
               type="radio"
               value={option}
@@ -31,7 +31,7 @@ export default function RadioButton(props: RadioButtonProps) {
               disabled={disabled}
             />
             {option}
-          </RadioButtonStyle>
+          </StyledRadioButton>
         </label>
       ))}
     </div>
