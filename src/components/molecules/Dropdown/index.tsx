@@ -122,12 +122,11 @@ const Dropdown = (props: DropdownProps) => {
   return (
     <DropdownRoot ref={dropdownRef}>
 
-      {/* DropdownControlの外観と挙動をdisableの状態に応じて出し分けできないか？ */}
       <DropdownControl
-        disabled={disabled}  //disable==trueの場合は外観を変える
+        disabled={disabled} 
         hasError={hasError}
-        onMouseDown={!disabled ? handleMouseDown : undefined} //disable==trueの場合は発火させない
-        onTouchEnd={handleMouseDown} //disable==trueの場合は発火させない
+        onMouseDown={!disabled ? handleMouseDown : undefined} 
+        onTouchEnd={handleMouseDown} 
         data-testid="dropdown-control"
       >
         {selectedItem && (
@@ -146,7 +145,7 @@ const Dropdown = (props: DropdownProps) => {
           value={selectedItem?.value ?? ''}
           onChange={() => onChange && onChange(selectedItem)}
         />
-        <DropdownArrow isOpen={isOpen} />
+        <DropdownArrow isOpen={isOpen} disabled={disabled} />
       </DropdownControl>
 
       {/* ドロップダウンを表示 */}

@@ -41,6 +41,7 @@ const SectionSelectDevice = () => {
 
   return (
     <div>
+      {/* Boxを使わずにSectionSelectDevice専用のstyleComp.tsxを作成し同じディレクトリに設置するのはどうか？ */}
       <Box width="400px" height="auto" padding="16px" border="solid 1px">
         <Text>ご希望の製品を選択してください</Text>
         <Dropdown
@@ -49,7 +50,7 @@ const SectionSelectDevice = () => {
           options={ [...option] }
           placeholder="製品を選択してください"
           onChange={onChange}
-          disabled='true'
+          // disabled= {true}
         />
         <Box marginTop="16px" border="solid 1px">
           <Text>あなたが選択した製品の価格</Text>

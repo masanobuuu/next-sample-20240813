@@ -42,11 +42,19 @@ export const DropdownPlaceholder = styled.div<{ disabled?: boolean }>`
 `
 
 // ドロップダウンの矢印の外観
-export const DropdownArrow = styled.div<{ isOpen?: boolean }>`
-  border-color: ${({ isOpen }) =>
+export const DropdownArrow = styled.div<{ isOpen?: boolean, disabled?: boolean }>`
+  border-color: ${({ isOpen, disabled }) =>
     isOpen
       ? 'transparent transparent #222222;'
+      : !disabled
+          ? '#222222 transparent transparent'
+          : '#D9D9D9 transparent transparent'};
+
+  /*
+      ? 'transparent transparent #222222;'
       : '#222222 transparent transparent'};
+      */
+
   border-width: ${({ isOpen }) => (isOpen ? '0 5px 5px' : '5px 5px 0;')};
   border-style: solid;
   content: ' ';
