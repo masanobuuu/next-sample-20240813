@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
-import { DropdownRoot, DropdownControl, DropdownValue, DropdownPlaceholder, DropdownArrow, DropdownMenu, DropdownOption } from './styledComp'
+import { DropdownRoot, DropdownControl, DropdownValue, DropdownPlaceholder, DropdownArrow, DropdownMenu, DropdownOption, ErrorMessage } from './styledComp'
 
 interface DropdownItemProps {
   item: DropdownItem
@@ -55,6 +55,10 @@ interface DropdownProps {
  * Disable
  */
   disabled?: boolean
+   /**
+   * エラーメッセージ
+   */
+   errorMessage?: string
 }
 
 /**
@@ -62,16 +66,11 @@ interface DropdownProps {
  */
 const Dropdown = (props: DropdownProps) => {
   // disableを追加する
-  const { onChange, name, value, options, hasError, disabled } = props
-
+  const { onChange, name, value, options, hasError, disabled, errorMessage } = props
   const initialItem = options.find((i) => i.value === value)
-
   const [isOpen, setIsOpenValue] = useState(false)
-
   const [selectedItem, setSelectedItem] = useState(initialItem)
-
   const dropdownRef = useRef<HTMLDivElement>(null)
-
   const handleDocumentClick = useCallback(
     (e: MouseEvent | TouchEvent) => {
       // 自分自身をクリックした場合は何もしない
@@ -84,7 +83,6 @@ const Dropdown = (props: DropdownProps) => {
           }
         }
       }
-
       setIsOpenValue(false)
     },
     [dropdownRef],
@@ -147,6 +145,11 @@ const Dropdown = (props: DropdownProps) => {
         />
         <DropdownArrow isOpen={isOpen} disabled={disabled} />
       </DropdownControl>
+
+        {/* hasErrorがtrueの場合はエラーメッセージを表示 */}
+        {hasError && (
+          <ErrorMessage>{errorMessage}</ErrorMessage>
+        )}
 
       {/* ドロップダウンを表示 */}
       {isOpen && (

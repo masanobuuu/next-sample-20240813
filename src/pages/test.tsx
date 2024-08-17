@@ -3,7 +3,7 @@ import Box from 'components/layout/Box'
 import Button from 'components/atoms/Button'
 import Text from 'components/atoms/Text'
 import Dropdown from 'components/molecules/Dropdown'
-import DropdownSection from 'components/organisms/SectionSelectDevice'
+import DropdownSection from 'components/organisms/selectDeviceSection'
 
 
 const Test: NextPage = () => {
