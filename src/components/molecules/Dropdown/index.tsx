@@ -2,81 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react'
 import styled from 'styled-components'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
-
-const DropdownRoot = styled.div`
-  position: relative;
-  height: 38px;
-`
-
-// ドロップダウン外観
-const DropdownControl = styled.div<{ hasError?: boolean }>`
-  position: relative;
-  overflow: hidden;
-  background-color: #ffffff;
-  border: ${({ hasError }) =>
-    hasError
-      ? `1px solid red`
-      : `1px solid #666`};
-  border-radius: 5px;
-  box-sizing: border-box;
-  cursor: default;
-  outline: none;
-  padding: 8px 52px 8px 12px;
-  width: auto;
-`
-
-const DropdownValue = styled.div`
-  color: #333333;
-`
-
-// ドロップダウンプレースホルダー
-const DropdownPlaceholder = styled.div`
-  color: #757575;
-  font-size: 14px;
-  min-height: 20px;
-  line-height: 20px;
-`
-
-// ドロップダウンの矢印の外観
-const DropdownArrow = styled.div<{ isOpen?: boolean }>`
-  border-color: ${({ isOpen }) =>
-    isOpen
-      ? 'transparent transparent #222222;'
-      : '#222222 transparent transparent'};
-  border-width: ${({ isOpen }) => (isOpen ? '0 5px 5px' : '5px 5px 0;')};
-  border-style: solid;
-  content: ' ';
-  display: block;
-  height: 0;
-  margin-top: -ceil(2.5);
-  position: absolute;
-  right: 10px;
-  top: 16px;
-  width: 0;
-`
-
-const DropdownMenu = styled.div`
-  background-color: #ffffff;
-  border: 1px solid #666;
-  box-shadow: 0px 5px 5px -3px rgb(0 0 0 / 20%),
-    0px 8px 10px 1px rgb(0 0 0 / 10%), 0px 3px 14px 2px rgb(0 0 0 / 12%);
-  box-sizing: border-box;
-  border-radius: 5px;
-  margin-top: -1px;
-  max-height: 200px;
-  overflow-y: auto;
-  position: absolute;
-  top: 100%;
-  width: 100%;
-  z-index: 1000;
-`
-
-const DropdownOption = styled.div`
-  padding: 8px 12px 8px 12px;
-  &:hover {
-    background-color: #f9f9f9;
-  }
-`
+import { DropdownRoot, DropdownControl, DropdownValue, DropdownPlaceholder, DropdownArrow, DropdownMenu, DropdownOption } from './styledComp'
 
 interface DropdownItemProps {
   item: DropdownItem
@@ -125,17 +51,27 @@ interface DropdownProps {
    * 値が変化した時のイベントハンドラ
    */
   onChange?: (selected?: DropdownItem) => void
+  /**
+ * Disable
+ */
+  disabled?: boolean
 }
 
 /**
  * ドロップダウン
  */
 const Dropdown = (props: DropdownProps) => {
-  const { onChange, name, value, options, hasError } = props
+  // disableを追加する
+  const { onChange, name, value, options, hasError, disabled } = props
+
   const initialItem = options.find((i) => i.value === value)
+
   const [isOpen, setIsOpenValue] = useState(false)
+
   const [selectedItem, setSelectedItem] = useState(initialItem)
+
   const dropdownRef = useRef<HTMLDivElement>(null)
+
   const handleDocumentClick = useCallback(
     (e: MouseEvent | TouchEvent) => {
       // 自分自身をクリックした場合は何もしない
@@ -185,10 +121,12 @@ const Dropdown = (props: DropdownProps) => {
 
   return (
     <DropdownRoot ref={dropdownRef}>
+
       <DropdownControl
+        disabled={disabled} 
         hasError={hasError}
-        onMouseDown={handleMouseDown}
-        onTouchEnd={handleMouseDown}
+        onMouseDown={!disabled ? handleMouseDown : undefined} 
+        onTouchEnd={handleMouseDown} 
         data-testid="dropdown-control"
       >
         {selectedItem && (
@@ -198,7 +136,7 @@ const Dropdown = (props: DropdownProps) => {
         )}
         {/* 何も選択されてない時はプレースホルダーを表示 */}
         {!selectedItem && (
-          <DropdownPlaceholder>{props?.placeholder}</DropdownPlaceholder>
+          <DropdownPlaceholder disabled={disabled}>{props?.placeholder}</DropdownPlaceholder>
         )}
         {/* ダミーinput */}
         <input
@@ -207,8 +145,9 @@ const Dropdown = (props: DropdownProps) => {
           value={selectedItem?.value ?? ''}
           onChange={() => onChange && onChange(selectedItem)}
         />
-        <DropdownArrow isOpen={isOpen} />
+        <DropdownArrow isOpen={isOpen} disabled={disabled} />
       </DropdownControl>
+
       {/* ドロップダウンを表示 */}
       {isOpen && (
         <DropdownMenu>
