@@ -7,17 +7,16 @@ import Dropdown from 'components/molecules/Dropdown'
 
 
 
-const SectionSelectDevice = () => {
+const SelectPlanSection = () => {
 
   // ステートを定義
   const [option, setOption] = useState('')
   const [error, setError] = useState('')
-  const [price24, setPrice24] = useState('')
-  const [price48, setPrice48] = useState('')
+  const [price, setPrice] = useState('')
 
   // fhechDeviceDataを定義（publicディレクトリのjsonファイルを読み込む）
   const fhechDeviceData = async () => {
-    const res = await fetch('deviceData.json')
+    const res = await fetch('planData.json')
     if (res.ok) { return res.json() }
     throw new Error(res.statusText)
   }
@@ -33,34 +32,33 @@ const SectionSelectDevice = () => {
   // ドロップダウンの項目選択がトリガーとなって子コンポーネント（Dropdown）側で以下関数の引数にオブジェクト（item）が格納される
   // itemが格納された時点で親コンポーネントが保有しているステート（price）を更新する
   const onChange = (item: any) => {
-    setPrice24(item.data.price24)
-    setPrice48(item.data.price48)
+    setPrice(item.data.price)
   }
-
-  console.log(price24==='' ? true : false)
 
   return (
     <div>
-      {/* Boxを使わずにSectionSelectDevice専用のstyleComp.tsxを作成し同じディレクトリに設置するのはどうか？ */}
+      {/* Boxを使わずにSelectDeviceSection専用のstyleComp.tsxを作成し同じディレクトリに設置するのはどうか？ */}
       <Box width="400px" height="auto" padding="16px" border="solid 1px">
-        <Text>ご希望の製品を選択してください</Text>
+
+        <Text>毎月のデータ利用量を選択してください</Text>
+
         <Dropdown
           // スプレッド構文でステートoption内のオブジェクトを分解して出力
           /* @ts-ignore */
           options={ [...option] }
-          placeholder="製品を選択してください"
+          placeholder="選択してください"
           onChange={onChange}
           // disabled= {true}
+          // hasError={true}
+          // errorMessage='エラー時に表示するメッセージ'
         />
         <Box marginTop="16px" border="solid 1px">
-          <Text>あなたが選択した製品の価格</Text>
-          {price24==='' ? '' : <Text>24回払いの場合：{price24}円/月</Text>}
-          {price48==='' ? '' : <Text>48回払いの場合：{price48}円/月</Text>}
+          <Text>月額料金</Text>
+          {price==='' ? '' : <Text>{price}円/月</Text>}
         </Box>
-
       </Box>
     </div>
   )
 }
 
-export default SectionSelectDevice
+export default SelectPlanSection

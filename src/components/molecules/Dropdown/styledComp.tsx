@@ -31,7 +31,7 @@ export const DropdownValue = styled.div`
 
 // ドロップダウンプレースホルダー
 export const DropdownPlaceholder = styled.div<{ disabled?: boolean }>`
-  color: ${( {disabled} ) => 
+  color: ${({ disabled }) =>
     !disabled
       ? `#333333`
       : `#D9D9D9`
@@ -47,14 +47,8 @@ export const DropdownArrow = styled.div<{ isOpen?: boolean, disabled?: boolean }
     isOpen
       ? 'transparent transparent #222222;'
       : !disabled
-          ? '#222222 transparent transparent'
-          : '#D9D9D9 transparent transparent'};
-
-  /*
-      ? 'transparent transparent #222222;'
-      : '#222222 transparent transparent'};
-      */
-
+        ? '#222222 transparent transparent'
+        : '#D9D9D9 transparent transparent'};
   border-width: ${({ isOpen }) => (isOpen ? '0 5px 5px' : '5px 5px 0;')};
   border-style: solid;
   content: ' ';
@@ -66,7 +60,13 @@ export const DropdownArrow = styled.div<{ isOpen?: boolean, disabled?: boolean }
   top: 16px;
   width: 0;
 `
-
+// エラーメッセージ
+export const ErrorMessage = styled.div<{ errorMessage?:string }>`
+  color: red;
+  font-size: 12px;
+  margin: 4px;
+`
+// ドロップダウンの項目選択時
 export const DropdownMenu = styled.div`
   background-color: #ffffff;
   border: 1px solid #666;
@@ -82,7 +82,7 @@ export const DropdownMenu = styled.div`
   width: 100%;
   z-index: 1000;
 `
-
+// ドロップダウンの項目
 export const DropdownOption = styled.div`
   padding: 8px 12px 8px 12px;
   &:hover {
