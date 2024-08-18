@@ -7,18 +7,26 @@ import SelectDeviceSection from 'components/organisms/selectDeviceSection'
 import SelectPlanSection from 'components/organisms/selectPlanSection'
 import SummarySection from 'components/organisms/summarySection'
 
+
 const Simulator: NextPage = () => {
+
+
+
   return (
     <div>
       <Box width="auto" height="auto" padding="8px" margin="8px">
         <SelectDeviceSection />
       </Box>
+
       <Box width="auto" height="auto" padding="8px" margin="8px">
         <SelectPlanSection />
       </Box>
+
       <Box width="auto" height="auto" padding="8px" margin="8px">
         <SummarySection />
       </Box>
+
+
     </div>
   )
 }

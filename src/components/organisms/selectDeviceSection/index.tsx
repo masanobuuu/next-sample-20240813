@@ -38,7 +38,7 @@ const SelectDeviceSection = () => {
     setPrice48(item.data.price48)
     setSpec(item.data.spec)
   }
-
+  console.log(option)
   return (
     <div>
       {/* Boxを使わずにSelectDeviceSection専用のstyleComp.tsxを作成し同じディレクトリに設置するのはどうか？ */}
@@ -49,7 +49,7 @@ const SelectDeviceSection = () => {
         <Dropdown
           // スプレッド構文でステートoption内のオブジェクトを分解して出力
           /* @ts-ignore */
-          options={ [...option] }
+          options={ [...option]}
           placeholder="製品を選択してください"
           onChange={onChange}
           // disabled= {true}

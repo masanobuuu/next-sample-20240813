@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useEffect, useState, useRef, useCallback, useContext } from 'react'
 import styled from 'styled-components'
 import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
@@ -6,8 +6,9 @@ import Box from 'components/layout/Box'
 import Dropdown from 'components/molecules/Dropdown'
 
 
-
 const SelectPlanSection = () => {
+
+
 
   // ステートを定義
   const [option, setOption] = useState('')
@@ -28,12 +29,15 @@ const SelectPlanSection = () => {
       .catch(err => setError(err.message))
   }, [])
 
+
   // 子コンポーネント（Dropdown）側でステートを更新するための関数
   // ドロップダウンの項目選択がトリガーとなって子コンポーネント（Dropdown）側で以下関数の引数にオブジェクト（item）が格納される
   // itemが格納された時点で親コンポーネントが保有しているステート（price）を更新する
   const onChange = (item: any) => {
     setPrice(item.data.price)
   }
+
+
 
   return (
     <div>

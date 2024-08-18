@@ -116,7 +116,7 @@ const Dropdown = (props: DropdownProps) => {
     // 最初だけ呼び出す
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
+  
   return (
     <DropdownRoot ref={dropdownRef}>
 
@@ -151,8 +151,8 @@ const Dropdown = (props: DropdownProps) => {
           <ErrorMessage>{errorMessage}</ErrorMessage>
         )}
 
-      {/* ドロップダウンを表示 */}
-      {isOpen && (
+      {/* ドロップダウンを表示 */ }
+      {isOpen && ( 
         <DropdownMenu>
           {props.options.map((item, idx) => (
             <DropdownOption

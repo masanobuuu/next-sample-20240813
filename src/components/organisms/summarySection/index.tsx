@@ -7,7 +7,7 @@ import Dropdown from 'components/molecules/Dropdown'
 
 
 
-const SelectPlanSection = () => {
+const SummarySection = () => {
 
   // ステートを定義
   const [option, setOption] = useState('')
@@ -61,4 +61,4 @@ const SelectPlanSection = () => {
   )
 }
 
-export default SelectPlanSection
+export default SummarySection
