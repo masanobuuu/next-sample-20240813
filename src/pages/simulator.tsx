@@ -6,11 +6,10 @@ import Dropdown from 'components/molecules/Dropdown'
 import SelectDeviceSection from 'components/organisms/selectDeviceSection'
 import SelectPlanSection from 'components/organisms/selectPlanSection'
 import SummarySection from 'components/organisms/summarySection'
+import React, { useContext } from 'react'
 
 
 const Simulator: NextPage = () => {
-
-
 
   return (
     <div>
@@ -19,7 +18,9 @@ const Simulator: NextPage = () => {
       </Box>
 
       <Box width="auto" height="auto" padding="8px" margin="8px">
-        <SelectPlanSection />
+        <PlanDataContexst.Provider>
+          <SelectPlanSection />
+        </PlanDataContexst.Provider>
       </Box>
 
       <Box width="auto" height="auto" padding="8px" margin="8px">
