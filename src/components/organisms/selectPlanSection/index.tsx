@@ -4,17 +4,17 @@ import Text from 'components/atoms/Text'
 import Flex from 'components/layout/Flex'
 import Box from 'components/layout/Box'
 import Dropdown from 'components/molecules/Dropdown'
+import PlanDataContext from 'pages/simulator'
 
 
 const SelectPlanSection = () => {
-
-
 
   // ステートを定義
   const [option, setOption] = useState('')
   const [error, setError] = useState('')
   const [price, setPrice] = useState('')
 
+  /*
   // fhechDeviceDataを定義（publicディレクトリのjsonファイルを読み込む）
   const fhechDeviceData = async () => {
     const res = await fetch('planData.json')
@@ -28,7 +28,10 @@ const SelectPlanSection = () => {
       .then(result => setOption(result))
       .catch(err => setError(err.message))
   }, [])
+  */
 
+  const planData = useContext(PlanDataContext)
+ // setOption(planData)
 
   // 子コンポーネント（Dropdown）側でステートを更新するための関数
   // ドロップダウンの項目選択がトリガーとなって子コンポーネント（Dropdown）側で以下関数の引数にオブジェクト（item）が格納される
@@ -36,7 +39,6 @@ const SelectPlanSection = () => {
   const onChange = (item: any) => {
     setPrice(item.data.price)
   }
-
 
 
   return (
@@ -49,7 +51,7 @@ const SelectPlanSection = () => {
         <Dropdown
           // スプレッド構文でステートoption内のオブジェクトを分解して出力
           /* @ts-ignore */
-          options={ [...option] }
+          options={ [planData] }
           placeholder="選択してください"
           onChange={onChange}
           // disabled= {true}
